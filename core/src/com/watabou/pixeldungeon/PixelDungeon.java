@@ -114,7 +114,7 @@ public class PixelDungeon extends Game<GameAction> {
 	public void resize(int width, int height) {
 		super.resize(width, height);
 
-		Graphics.DisplayMode mode = Gdx.graphics.getDesktopDisplayMode();
+		Graphics.DisplayMode mode = Gdx.graphics.getDisplayMode();
 		boolean maximized = width >= mode.width || height >= mode.height;
 
 		if (!maximized && !fullscreen()) {
@@ -144,12 +144,12 @@ public class PixelDungeon extends Game<GameAction> {
 		if (value) {
 			prefs.put(Preferences.KEY_WINDOW_FULLSCREEN, true);
 
-			Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
+			Gdx.graphics.setWindowedMode(Gdx.graphics.getDisplayMode().width, Gdx.graphics.getDisplayMode().height);
 		} else {
 			int w = prefs.getInt(Preferences.KEY_WINDOW_WIDTH, Preferences.DEFAULT_WINDOW_WIDTH);
 			int h = prefs.getInt(Preferences.KEY_WINDOW_HEIGHT, Preferences.DEFAULT_WINDOW_HEIGHT);
 			prefs.put(Preferences.KEY_WINDOW_FULLSCREEN, false);
-			Gdx.graphics.setDisplayMode(w, h, false);
+			Gdx.graphics.setWindowedMode(w, h);
 		}
 	}
 
